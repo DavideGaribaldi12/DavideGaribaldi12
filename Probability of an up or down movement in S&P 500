@@ -1,0 +1,33 @@
+# importing yohoofinance to find data, pandas to onalyze datas and numpy to work with vectors and marix easly
+import finance as yf
+import numpy as no import pandas as pd
+
+
+# select the ticker of the stock andex that you would to import and work on. Then download the data (since to)
+tickere"*GSPC"
+data = yf. download(ticker, state"2011-01-01", end="2024-04-05")
+Adjusted data
+data["daily reluen"] e data 'Adj Close" .pct changel
+data["state"] e mp.where data daily return" ›= 8, "up", "down")
+
+
+# Define the way for counting the up moves and the down moves
+up_counts = len(data[data["state"] == "up"])
+down_counts = len(data[data["state"] == "down"])
+up_to_up = len(data[ (data["state"] == "up") & (data["state"J.shift(-1) == "up") J) / len(data.query('state=="up'"))
+down_to_up = len(data[ (data["state"] == "up") & (data["state"].shift (-1) == "down"')]) / len (data.query('state=s"up"'*))
+up to down = len(data (data["state"] == "down") & (datal"state"].shift(-1) == "up")]) / len(data.query('state=="down'*))
+down_to_down = len(data[ (data["state"] == "down") & (data["state"J.shift (-1) == "down")]) / len(data.query('state=="down'*))
+
+
+#Now I need to constuct a matrix in wich i can view the different probability for each movement (up to up, up to down, down to down, down to up)
+I can view the previous probability using the print function
+print (transition_matrix)
+
+
+#now we need to view the probability to see a down state before N=5 consecutive up states
+probability_down_after_Sup=len(data[ (data["state") == "up) & (data("state").shift (-1) == "down") & (data("state"J.shift (-2) == "down") & (data["state"]))])
+probability_down
+
+# the inverse of this probability is define the probability to see an up state before fife consecutive up state
+probability_up=1-probability_down
